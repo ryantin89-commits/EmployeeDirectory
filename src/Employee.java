@@ -2,7 +2,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
-/*Robert Yantin Jr.
+/**Robert Yantin Jr.
  * CEN 3024 - Software Development I
  * October 13, 2025
  * Employee.java
