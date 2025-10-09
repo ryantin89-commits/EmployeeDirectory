@@ -5,8 +5,8 @@ import java.util.List;
  * CEN 3024 - Software Development I
  * October 13, 2025
  * EmployeeRepository.java
- * This class basically acts like a fake database for our Employee objects.
- * It stores them in a list and lets us do CRUD (create, Read, Updated, Delete).
+ * This class basically acts like a database for our Employee objects.
+ * It stores them in a list and lets us do CRUD (Create, Read, Update, Delete).
  * For Phase 1, everything happens in memory - no database yet.
  */
 
@@ -16,11 +16,11 @@ public class EmployeeRepository {
     private List<Employee> employees = new ArrayList<>();
 
     //The below will help us assign a unique ID to every new employee
-    private int nextID = 1;
+    private int nextId = 1;
 
     //The below acts to automatically give an employee ID when a new employee is added to the database
     public void addEmployee(Employee employee) {
-        employee.setId(nextID++);
+        employee.setId(nextId++);
         employees.add(employee);
     }
 
@@ -29,8 +29,8 @@ public class EmployeeRepository {
         return employees;
     }
 
-    //The below find an employee by ID.  If it doesn't exist, returns null.
-    public Employee getEmployee(int id) {
+    //The below is used to find an employee by ID.  If it doesn't exist, returns null.
+    public Employee getEmployeeById(int id) {
         for (Employee ee : employees) {
             if (ee.getId() == id) {
                 return ee;
@@ -48,7 +48,6 @@ public class EmployeeRepository {
                 ee.setEmail(updatedEmployee.getEmail());
                 ee.setPhone(updatedEmployee.getPhone());
                 ee.setDepartment(updatedEmployee.getDepartment());
-                ee.setPhone(updatedEmployee.getPhone());
                 ee.setOfficeLocation(updatedEmployee.getOfficeLocation());
                 ee.setHireDate(updatedEmployee.getHireDate());
                 return true;
@@ -90,6 +89,6 @@ public class EmployeeRepository {
     //The below clears all employees (used if we ever want to reload data).
     public void clearAllEmployees() {
         employees.clear();
-        nextID = 1;
+        nextId = 1;
     }
 }
