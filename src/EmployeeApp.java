@@ -190,7 +190,7 @@ public class EmployeeApp {
         e.setHireDate(promptDate("Hire Date: "));
 
         boolean ok = service.addEmployee(e);
-        System.out.println(ok ? "Added!" : "Not added (validation failed).");
+        System.out.println(ok ? "New Employee Added!" : "Not added (validation failed).");
     }
 
     //(4)The below updates an existing employee
@@ -321,7 +321,7 @@ public class EmployeeApp {
 
     private String formatEmployee(Employee e) {
         return String.format(
-                "ID=%d | %s %s | %s | Phone Ext.: %s |Dept: %s | Office Location: %s | Hire Date: %s",
+                "ID=%04d | %s %s | %s | Phone Ext.: %s |Dept: %s | Office Location: %s | Hire Date: %s",
                 e.getId(),
                 safe(e.getFirstName()),
                 safe(e.getLastName()),
