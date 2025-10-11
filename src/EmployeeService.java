@@ -3,7 +3,7 @@ import java.util.List;
 /**Robert Yantin Jr.
  * CEN 3024 - Software Development I
  * October 13, 2025
- * EmployeeServicejava
+ * EmployeeService.java
  * This class handles all the logic behind the scenes for the employee system.
  * It connects the main program with the EmployeeRepository and makes sure all input
  * is valid before anything gets saved or changed.
@@ -59,6 +59,11 @@ public class EmployeeService {
     }
 
     //The below searches for employees that match a keyword (like a name or a department)
+    public List<Employee> searchEmployees(String keyword) {
+        return repo.searchEmployees(keyword);
+    }
+
+    //The below clears all employees (For testing purposes)
     public void clearAllEmployees() {
         repo.clearAllEmployees();
     }
