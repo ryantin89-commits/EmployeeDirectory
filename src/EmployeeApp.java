@@ -11,7 +11,8 @@ import java.util.*;
  * October 13, 2025
  * EmployeeApp.java
  * This is the main entry point for Phase 1 (logic and input validation).
- * It's a simple, menu based console app where I can add/update/delete/search employees.
+ * It's a simple, menu based console app where I can add/update/delete/search employees in my Employee
+ * Directory DMS.
  * Everything runs in memory at this point, no database until a future phase.
  */
 
