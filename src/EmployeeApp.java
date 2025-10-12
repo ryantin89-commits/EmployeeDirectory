@@ -50,7 +50,9 @@ public class EmployeeApp {
                     running = false;
                     break;
 
-                default: System.out.println("Invalid menu option.  Please choose 1 - 9");
+                default:
+                    System.out.println("Invalid menu option.  Please choose 1 - 9");
+                    break;
             }
             System.out.println(); //Adding a blank line for spacing
         }
