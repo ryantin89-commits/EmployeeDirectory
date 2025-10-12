@@ -46,8 +46,8 @@ public class EmployeeRepository {
                 ee.setFirstName(updatedEmployee.getFirstName());
                 ee.setLastName(updatedEmployee.getLastName());
                 ee.setEmail(updatedEmployee.getEmail());
-                ee.setPhone(updatedEmployee.getPhone());
                 ee.setDepartment(updatedEmployee.getDepartment());
+                ee.setPhone(updatedEmployee.getPhone());
                 ee.setOfficeLocation(updatedEmployee.getOfficeLocation());
                 ee.setHireDate(updatedEmployee.getHireDate());
                 return true;

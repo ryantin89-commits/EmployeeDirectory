@@ -63,7 +63,7 @@ public class EmployeeApp {
         System.out.println("3) Add Employee     (Create)");
         System.out.println("4) Update Employee  (Update)");
         System.out.println("5) Delete Employee  (Delete)");
-        System.out.println("6) Search Employee  (Name/Email/Department");
+        System.out.println("6) Search Employee  (Name/Email/Department)");
         System.out.println("7) Custom: Count Employees by Department");
         System.out.println("8) Clear All Employees");
         System.out.println("9) Exit");
@@ -108,7 +108,7 @@ public class EmployeeApp {
 
     //The below are the features
     //(1)The below is for the load employees from text file
-    //Format per line: FirstName, LastName, Email, Phone, Department, OfficeLocation, HireDate
+    //Format per line: FirstName, LastName, Email, Department, Phone, OfficeLocation, Hire Date
     private void loadFromTxt() {
         String path = promptNonEmpty("Enter TXT file path: ");
         int loaded = 0;
@@ -207,8 +207,8 @@ public class EmployeeApp {
         String first = promptKeep("First name", existing.getFirstName());
         String last = promptKeep("Last name", existing.getLastName());
         String email = promptKeep("Email", existing.getEmail());
-        String phone = promptKeep("Phone", existing.getPhone());
         String department = promptKeep("Department", existing.getDepartment());
+        String phone = promptKeep("Phone", existing.getPhone());
         String office = promptKeep("Office Location", existing.getOfficeLocation());
         LocalDate hire = promptKeepDate("Hire Date", existing.getHireDate());
 
@@ -217,8 +217,8 @@ public class EmployeeApp {
         updated.setFirstName(first);
         updated.setLastName(last);
         updated.setEmail(email);
-        updated.setPhone(phone);
         updated.setDepartment(department);
+        updated.setPhone(phone);
         updated.setOfficeLocation(office);
         updated.setHireDate(hire);
 
@@ -228,7 +228,7 @@ public class EmployeeApp {
 
     //Lets the user edit a field but keep the old value by pressing Enter
     private String promptKeep(String label, String current) {
-        System.out.print(label + "[" + current + "] (Enter to keep): ");
+        System.out.print(label + "[" + current + "] (Enter to keep, type to update): ");
         String raw = scanner.nextLine();
         return raw.isBlank() ? current : raw.trim();
     }
@@ -236,7 +236,7 @@ public class EmployeeApp {
     //Same as the promptKeep but for date.  Let the user edit the field but keeps the old value by pressing Enter
     @SuppressWarnings("SameParameterValue")
     private LocalDate promptKeepDate(String label, LocalDate current) {
-        System.out.print(label + "[" + current + "] (Enter to keep): ");
+        System.out.print(label + "[" + current + "] (Enter to keep, type to update): ");
         String raw = scanner.nextLine().trim();
         if (raw.isBlank()) return current;
         try {
@@ -274,7 +274,7 @@ public class EmployeeApp {
 
     //(6)The below searches employees by keyword (name/email/department)
     private void searchEmployee() {
-        String keyword = promptNonEmpty("Enter search keyword: ");
+        String keyword = promptNonEmpty("Enter search keyword (Name/Email/Department): ");
         List<Employee> hits = service.searchEmployees(keyword);
         if (hits.isEmpty()) {
             System.out.println("No employees found.");
@@ -321,13 +321,13 @@ public class EmployeeApp {
 
     private String formatEmployee(Employee e) {
         return String.format(
-                "ID=%04d | %s %s | %s | Phone Ext.: %s |Dept: %s | Office Location: %s | Hire Date: %s",
+                "ID=%04d | %s %s | Email: %s | Department: %s | Phone Ext.: %s | Office Location: %s | Hire Date: %s",
                 e.getId(),
                 safe(e.getFirstName()),
                 safe(e.getLastName()),
                 safe(e.getEmail()),
-                safe(e.getPhone()),
                 safe(e.getDepartment()),
+                safe(e.getPhone()),
                 safe(e.getOfficeLocation()),
                 e.getHireDate() == null ? "N/A" : e.getHireDate().toString()
         );
