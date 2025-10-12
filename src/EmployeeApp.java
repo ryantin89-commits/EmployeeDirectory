@@ -48,6 +48,7 @@ public class EmployeeApp {
                 case 9:
                     System.out.println("Exiting Employee Directory...Goodbye!");
                     running = false;
+                    break;
 
                 default: System.out.println("Invalid menu option.  Please choose 1 - 9");
             }
