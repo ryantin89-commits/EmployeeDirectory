@@ -58,6 +58,35 @@ public class EmployeeService {
         return success;
     }
 
+    //The below marks an employee as inactive (soft delete)
+    public boolean deactivateEmployee(int id) {
+        Employee ee = repo.getEmployeeById(id);
+        if (ee != null) {
+            System.out.println("Error: Employee not found.");
+            return false;
+        }
+        if (!ee.isActive()) {
+            System.out.println("Employee is already inactive.");
+            return false;
+        }
+        ee.setActive(false);
+        return true;
+    }
+
+    //The below brings an inactive employee back to active
+    public boolean reactivateEmployee(int id) {
+        Employee ee = repo.getEmployeeById(id);
+        if (ee != null) {
+            System.out.println("Error: Employee not found.");
+            return false;
+        }
+        if (!ee.isActive()) {
+            System.out.println("Employee is already active.");
+        }
+        ee.setActive(true);
+        return true;
+    }
+
     //The below searches for employees that match a keyword (like a name or a department)
     public List<Employee> searchEmployees(String keyword) {
         return repo.searchEmployees(keyword);
