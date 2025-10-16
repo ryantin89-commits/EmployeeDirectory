@@ -36,7 +36,7 @@ public class EmployeeApp {
         boolean running = true;
         while (running) {
             printMenu(); //Shows the menu each time
-            int choice = readInt("Choose an option (1 - 9): ");
+            int choice = readInt("Choose an option (1 - 11): ");
             switch (choice) {
                 case 1: loadFromTxt(); break;
                 case 2: displayAll(); break;
@@ -45,8 +45,10 @@ public class EmployeeApp {
                 case 5: deleteEmployee(); break;
                 case 6: searchEmployee(); break;
                 case 7: customActionCountbyDepartment(); break;
-                case 8: clearAll(); break;
-                case 9:
+                case 8: deactivateEmployee(); break;
+                case 9: reactivateEmployee(); break;
+                case 10: clearAll(); break;
+                case 11:
                     System.out.println("Exiting Employee Directory...Goodbye!");
                     running = false;
                     break;
@@ -69,8 +71,10 @@ public class EmployeeApp {
         System.out.println("5) Delete Employee  (Delete)");
         System.out.println("6) Search Employee  (Name/Email/Department)");
         System.out.println("7) Custom: Count Employees by Department");
-        System.out.println("8) Clear All Employees");
-        System.out.println("9) Exit");
+        System.out.println("8) De-Activate Employee (soft Delete)");
+        System.out.println("9) Re-Activate Employee");
+        System.out.println("10) Clear all Employees");
+        System.out.println("11) Exit");
     }
 
     //The below keeps the app from crashing if someone types letters instead of numbers
@@ -321,7 +325,22 @@ public class EmployeeApp {
         counts.forEach((dept, count) -> System.out.println(dept + ": " + count));
     }
 
-    //(8)The below clears everything from memory (created this for testing purposes)
+    //(8)The below is for the soft delete: Mark as Inactive
+    private void deactivateEmployee() {
+        int id = readInt("Enter Employee ID to deactivate: ");
+        boolean ok = service.deactivateEmployee(id);
+        System.out.println(ok ? "Employee Deactivated!" : "Not deactivated (validation failed).");
+    }
+
+    //(9)The below brings back an inactive employee
+    private void reactivateEmployee() {
+        int id = readInt("Enter Employee ID to reactivate: ");
+        boolean ok = service.reactivateEmployee(id);
+        System.out.println(ok ? "Employee reactivated!" : "Not reactivated (validation failed).");
+    }
+
+
+    //(10)The below clears everything from memory (created this for testing purposes)
     private void clearAll() {
         if(confirm("Clear all employees from memory? (y/n): ")) {
             service.clearAllEmployees();
@@ -332,8 +351,9 @@ public class EmployeeApp {
     }
 
     private String formatEmployee(Employee e) {
+        String status = e.isActive() ? "Active" : "Inactive";
         return String.format(
-                "ID=%04d | %s %s | Email: %s | Department: %s | Phone Ext.: %s | Office Location: %s | Hire Date: %s",
+                "ID=%04d | %s %s | Email: %s | Department: %s | Phone Ext.: %s | Office Location: %s | Hire Date: %s | Status: %s",
                 e.getId(),
                 safe(e.getFirstName()),
                 safe(e.getLastName()),
