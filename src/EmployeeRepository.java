@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**Robert Yantin Jr.
  * CEN 3024 - Software Development I
@@ -43,7 +44,7 @@ public class EmployeeRepository {
     //The below updates an employee by matching their ID.  Returns true if successful, false if the employee doesn't exist.
     public boolean updateEmployee(Employee updatedEmployee) {
         for (Employee e : employees) {
-            if (e.getId() == updatedEmployee.getId()) {
+            if (Objects.equals(e.getId(), updatedEmployee.getId())) {
                 e.setFirstName(updatedEmployee.getFirstName());
                 e.setLastName(updatedEmployee.getLastName());
                 e.setEmail(updatedEmployee.getEmail());
@@ -61,7 +62,7 @@ public class EmployeeRepository {
     public boolean deleteEmployee(int id) {
         Employee toRemove = null;
         for (Employee e : employees) {
-            if (e.getId() == id) {
+            if (Objects.equals(e.getId(), id)) {
                 toRemove = e;
                 break;
             }
