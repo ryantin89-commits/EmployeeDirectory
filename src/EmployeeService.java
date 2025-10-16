@@ -70,9 +70,35 @@ public class EmployeeService {
 
     //The below method checks if employee data is valid (like no blank fields)
     private boolean isValidEmployee(Employee employee) {
-        return employee.getFirstName() != null && !employee.getFirstName().isBlank() &&
-                employee.getLastName() != null && !employee.getLastName().isBlank() &&
-                employee.getEmail() != null && !employee.getEmail().isBlank() &&
+        if (employee == null) return false;
+
+        boolean namesOk =
+                employee.getFirstName() != null && !employee.getFirstName().isBlank() &&
+                employee.getLastName() != null && !employee.getLastName().isBlank();
+
+        boolean deptOk =
                 employee.getDepartment() != null && !employee.getDepartment().isBlank();
+
+        boolean emailOk =
+                validateEmailFormat(employee.getEmail());
+
+        return namesOk && deptOk && emailOk;
+    }
+
+    //The below method is an email validation that checks the email data is valid (looks like a regular email)
+    public boolean validateEmailFormat(String email) {
+        if (email == null || email.isBlank()) {
+            System.out.println("Error: Email cannot be blank.");
+            return false;
+        }
+
+        //Basic pattern for email: text@text.domain
+        boolean isValid = email.matches(".+@.+\\..+");
+
+        if (!isValid) {
+            System.out.println("Error: Invalid email format. Please use something like name@domain.com");
+        }
+
+        return isValid;
     }
 }
