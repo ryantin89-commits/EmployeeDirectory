@@ -132,8 +132,8 @@ public class EmployeeService {
     }
 
     //The below counts employees per department.  This is used by the custom action and testing
-    public java.util.Map<String, Integer> countByDepartments() {
-        java.util.Map<String, Integer> counts = new java.util.TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+    public java.util.Map<String, Integer> countByDepartment() {
+        java.util.Map<String, Integer> counts = new java.util.HashMap<>();
 
         for (Employee e : getAllEmployees()) {
             String dept = (e.getDepartment() == null || e.getDepartment().isBlank())
