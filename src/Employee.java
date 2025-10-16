@@ -24,6 +24,9 @@ public class Employee {
     private String phone;
     private String officeLocation;
 
+    //Tracks if the employee is active in the system (soft delete)
+    private boolean active = true;
+
     //Hire date is going to be used a LocalDate instead of a String
     private LocalDate hireDate;
 
@@ -91,6 +94,12 @@ public class Employee {
     }
     public void setHireDate(LocalDate hireDate) {
         this.hireDate = hireDate;
+    }
+    public boolean isActive() {
+        return active;
+    }
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     //The below are my helper methods
