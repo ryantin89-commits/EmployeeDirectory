@@ -44,7 +44,7 @@ public class EmployeeApp {
                 case 4: updateEmployee(); break;
                 case 5: deleteEmployee(); break;
                 case 6: searchEmployee(); break;
-                case 7: customActionCountbyDepartment(); break;
+                case 7: customActionCountByDepartment(); break;
                 case 8: deactivateEmployee(); break;
                 case 9: reactivateEmployee(); break;
                 case 10: clearAll(); break;
@@ -304,7 +304,7 @@ public class EmployeeApp {
     }
 
     //(7)Custom action: count employees by department
-    private void customActionCountbyDepartment() {
+    private void customActionCountByDepartment() {
         List<Employee> all = service.getAllEmployees();
         if (all.isEmpty()) {
             System.out.println("No employees found to count.");
@@ -325,16 +325,45 @@ public class EmployeeApp {
         counts.forEach((dept, count) -> System.out.println(dept + ": " + count));
     }
 
+    //
+
     //(8)The below is for the soft delete: Mark as Inactive
     private void deactivateEmployee() {
-        int id = readInt("Enter Employee ID to deactivate: ");
+        int id = readInt("Enter Employee ID to deactivate (0 to cancel): ");
+        if (id <= 0) {
+            System.out.println("Cancelled.");
+        }
+
+        Employee e =  service.getEmployeeById(id);
+        if (e == null) {
+            System.out.println("Employee with ID " + String.format("%04d", id) + " not found.");
+            return;
+        }
+
+        System.out.println("About to deactivate: " + formatEmployee(e));
+        if (!confirm("Are you sure? (y/n): ")) {
+            System.out.println("Cancelled.");
+            return;
+        }
+
         boolean ok = service.deactivateEmployee(id);
         System.out.println(ok ? "Employee Deactivated!" : "Not deactivated (validation failed).");
     }
 
     //(9)The below brings back an inactive employee
     private void reactivateEmployee() {
-        int id = readInt("Enter Employee ID to reactivate: ");
+        int id = readInt("Enter Employee ID to reactivate (o to cancel): ");
+        if (id <= 0) {
+            System.out.println("Cancelled.");
+            return;
+        }
+
+        Employee e =  service.getEmployeeById(id);
+        if (e == null) {
+            System.out.println("Employee with ID " + String.format("%04d" + id) + " not found.");
+            return;
+        }
+
         boolean ok = service.reactivateEmployee(id);
         System.out.println(ok ? "Employee reactivated!" : "Not reactivated (validation failed).");
     }
