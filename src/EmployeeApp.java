@@ -361,7 +361,8 @@ public class EmployeeApp {
                 safe(e.getDepartment()),
                 safe(e.getPhone()),
                 safe(e.getOfficeLocation()),
-                e.getHireDate() == null ? "N/A" : e.getHireDate().toString()
+                e.getHireDate() == null ? "N/A" : e.getHireDate().toString(),
+                status
         );
     }
 
