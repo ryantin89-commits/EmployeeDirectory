@@ -130,4 +130,17 @@ public class EmployeeService {
 
         return isValid;
     }
+
+    //The below counts employees per department.  This is used by the custom action and testing
+    public java.util.Map<String, Integer> countByDepartments() {
+        java.util.Map<String, Integer> counts = new java.util.TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+
+        for (Employee e : getAllEmployees()) {
+            String dept = (e.getDepartment() == null || e.getDepartment().isBlank())
+                    ? "(Unknown)"
+                    : e.getDepartment().trim();
+            counts.put(dept, counts.getOrDefault(dept, 0) + 1);
+        }
+        return counts;
+    }
 }
