@@ -19,9 +19,9 @@ public class EmployeeRepository {
     private int nextId = 1;
 
     //The below acts to automatically give an employee ID when a new employee is added to the database
-    public void addEmployee(Employee employee) {
-        employee.setId(nextId++);
-        employees.add(employee);
+    public void addEmployee(Employee e) {
+        e.setId(nextId++);
+        employees.add(e);
     }
 
     //The below returns all employees
@@ -31,9 +31,9 @@ public class EmployeeRepository {
 
     //The below is used to find an employee by ID.  If it doesn't exist, returns null.
     public Employee getEmployeeById(int id) {
-        for (Employee ee : employees) {
-            if (ee.getId() == id) {
-                return ee;
+        for (Employee e : employees) {
+            if (e.getId() != null && e.getId() == id) {
+                return e;
             }
         }
         return null;
@@ -41,15 +41,15 @@ public class EmployeeRepository {
 
     //The below updates an employee by matching their ID.  Returns true if successful, false if the employee doesn't exist.
     public boolean updateEmployee(Employee updatedEmployee) {
-        for (Employee ee : employees) {
-            if (ee.getId() == updatedEmployee.getId()) {
-                ee.setFirstName(updatedEmployee.getFirstName());
-                ee.setLastName(updatedEmployee.getLastName());
-                ee.setEmail(updatedEmployee.getEmail());
-                ee.setDepartment(updatedEmployee.getDepartment());
-                ee.setPhone(updatedEmployee.getPhone());
-                ee.setOfficeLocation(updatedEmployee.getOfficeLocation());
-                ee.setHireDate(updatedEmployee.getHireDate());
+        for (Employee e : employees) {
+            if (e.getId() == updatedEmployee.getId()) {
+                e.setFirstName(updatedEmployee.getFirstName());
+                e.setLastName(updatedEmployee.getLastName());
+                e.setEmail(updatedEmployee.getEmail());
+                e.setDepartment(updatedEmployee.getDepartment());
+                e.setPhone(updatedEmployee.getPhone());
+                e.setOfficeLocation(updatedEmployee.getOfficeLocation());
+                e.setHireDate(updatedEmployee.getHireDate());
                 return true;
             }
         }
@@ -59,9 +59,9 @@ public class EmployeeRepository {
     //The below deletes an employee by ID.  Returns true if deleted, false if not found.
     public boolean deleteEmployee(int id) {
         Employee toRemove = null;
-        for (Employee ee : employees) {
-            if (ee.getId() == id) {
-                toRemove = ee;
+        for (Employee e : employees) {
+            if (e.getId() == id) {
+                toRemove = e;
                 break;
             }
         }
@@ -75,12 +75,12 @@ public class EmployeeRepository {
     //The below searches for employees that match a keyword (name, email, department).
     public List<Employee> searchEmployees (String keyword) {
         List<Employee> results = new ArrayList<>();
-        for (Employee ee : employees) {
-            if (ee.getFirstName().toLowerCase().contains(keyword.toLowerCase()) ||
-                    ee.getLastName().toLowerCase().contains(keyword.toLowerCase()) ||
-                    ee.getEmail().toLowerCase().contains(keyword.toLowerCase()) ||
-                    ee.getDepartment().toLowerCase().contains(keyword.toLowerCase())) {
-                results.add(ee);
+        for (Employee e : employees) {
+            if (e.getFirstName().toLowerCase().contains(keyword.toLowerCase()) ||
+                    e.getLastName().toLowerCase().contains(keyword.toLowerCase()) ||
+                    e.getEmail().toLowerCase().contains(keyword.toLowerCase()) ||
+                    e.getDepartment().toLowerCase().contains(keyword.toLowerCase())) {
+                results.add(e);
             }
         }
         return results;
