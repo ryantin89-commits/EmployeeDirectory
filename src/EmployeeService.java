@@ -60,7 +60,7 @@ public class EmployeeService {
 
     //The below marks an employee as inactive (soft delete)
     public boolean deactivateEmployee(int id) {
-        Employee ee = repo.getEmployeeById(id);
+        Employee ee = getEmployeeById(id);
         if (ee != null) {
             System.out.println("Error: Employee not found.");
             return false;
@@ -75,7 +75,7 @@ public class EmployeeService {
 
     //The below brings an inactive employee back to active
     public boolean reactivateEmployee(int id) {
-        Employee ee = repo.getEmployeeById(id);
+        Employee ee = getEmployeeById(id);
         if (ee != null) {
             System.out.println("Error: Employee not found.");
             return false;

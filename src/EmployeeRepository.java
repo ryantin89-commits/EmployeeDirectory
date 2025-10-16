@@ -19,9 +19,10 @@ public class EmployeeRepository {
     private int nextId = 1;
 
     //The below acts to automatically give an employee ID when a new employee is added to the database
-    public void addEmployee(Employee e) {
+    public boolean addEmployee(Employee e) {
         e.setId(nextId++);
         employees.add(e);
+        return true;
     }
 
     //The below returns all employees
