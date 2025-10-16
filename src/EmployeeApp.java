@@ -185,9 +185,17 @@ public class EmployeeApp {
     private void addEmployee() {
         System.out.println("Add New Employee");
         Employee e = new Employee();
+
         e.setFirstName(promptNonEmpty("First Name: "));
         e.setLastName(promptNonEmpty("Last Name: "));
-        e.setEmail(promptNonEmpty("Email: "));
+
+        //The below loops keeps prompting the user until a valid email is entered.
+        String email;
+        do {
+            email = promptNonEmpty("Email: ");
+        } while (!service.validateEmailFormat(email));
+        e.setEmail(email);
+
         e.setDepartment(promptNonEmpty("Department: "));
         e.setPhone(promptNonEmpty("Phone: "));
         e.setOfficeLocation(promptNonEmpty("Office Location: "));
