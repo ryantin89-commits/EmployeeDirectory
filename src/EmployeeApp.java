@@ -332,6 +332,7 @@ public class EmployeeApp {
         int id = readInt("Enter Employee ID to deactivate (0 to cancel): ");
         if (id <= 0) {
             System.out.println("Cancelled.");
+            return;
         }
 
         Employee e =  service.getEmployeeById(id);
@@ -352,7 +353,7 @@ public class EmployeeApp {
 
     //(9)The below brings back an inactive employee
     private void reactivateEmployee() {
-        int id = readInt("Enter Employee ID to reactivate (o to cancel): ");
+        int id = readInt("Enter Employee ID to reactivate (0 to cancel): ");
         if (id <= 0) {
             System.out.println("Cancelled.");
             return;
@@ -360,7 +361,7 @@ public class EmployeeApp {
 
         Employee e =  service.getEmployeeById(id);
         if (e == null) {
-            System.out.println("Employee with ID " + String.format("%04d" + id) + " not found.");
+            System.out.println("Employee with ID " + String.format("%04d", + id) + " not found.");
             return;
         }
 
