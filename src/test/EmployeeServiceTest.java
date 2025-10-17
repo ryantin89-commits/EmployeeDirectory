@@ -82,6 +82,14 @@ class EmployeeServiceTest {
         assertEquals(0, service.getAllEmployees().size());
     }
 
+    //Below trying to delete someone who doesn't exist should fail
+    @org.junit.jupiter.api.Test
+    void deleteEmployee_returnsFalseWhenNotFound() {
+
+        //No one added yet, so this ID 9999 shouldn't exist
+        assertFalse(service.deleteEmployee(9999));
+        assertEquals(0, service.getAllEmployees().size());
+    }
 
     //Custom Action: Count by Department Test
     //The below checks that the countByDepartment() method works properly.
@@ -115,5 +123,12 @@ class EmployeeServiceTest {
 
         //Should only have two departments total
         assertEquals(2, counts.size());
+    }
+
+    //Count with no employees.  The count map should be empty
+    @org.junit.jupiter.api.Test
+    void countByDepartment_returnsEmptyWhenNoEmployees() {
+        var counts = service.countByDepartment();
+        assertTrue(counts.isEmpty(), "If there are no employees, there should be any department counts");
     }
 }
