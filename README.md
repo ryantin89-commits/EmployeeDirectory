@@ -1,4 +1,4 @@
-# 🧑‍💼 Employee Directory – DMS Project Phase 1
+# 🧑‍💼 Employee Directory – DMS Project
 
 **Author:** Robert Yantin Jr.  
 **Course:** CEN 3024 – Software Development I  
