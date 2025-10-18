@@ -1,7 +1,20 @@
 import java.time.LocalDate;
 import java.util.Map;
-
 import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Robert Yantin Jr.
+ * CEN 3024 - Software Development I
+ * October 20, 2025
+ * EmployeeServiceTest.java
+ *
+ * This class uses JUnit 5 to test all the main features of my Employee Directory System.
+ * It checks that adding, updating, deleting, and counting employees (custom action) work correctly,
+ * and that invalid inputs are caught properly.
+ *
+ * Each test includes a positive (passing) and negative (failing) case
+ * to make sure the program behaves as expected under different scenarios.
+ */
 
 class EmployeeServiceTest {
 
