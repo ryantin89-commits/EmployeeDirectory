@@ -1,3 +1,5 @@
+package com.cityhall.dms;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -9,9 +11,9 @@ import java.util.*;
 /**Robert Yantin Jr.
  * CEN 3024 - Software Development I
  * October 20, 2025
- * EmployeeApp.java
+ * com.cityhall.dms.EmployeeApp.java
  * This is the main entry point for Phase 1 (logic and input validation).
- * It's a simple, menu based console app where I can add/update/delete/search employees in my Employee
+ * It's a simple, menu based console app where I can add/update/delete/search employees in my com.cityhall.dms.Employee
  * Directory DMS.
  * Everything runs in memory at this point, no database until a future phase.
  */
@@ -49,7 +51,7 @@ public class EmployeeApp {
                 case 9: reactivateEmployee(); break;
                 case 10: clearAll(); break;
                 case 11:
-                    System.out.println("Exiting Employee Directory...Goodbye!");
+                    System.out.println("Exiting com.cityhall.dms.Employee Directory...Goodbye!");
                     running = false;
                     break;
 
@@ -63,16 +65,16 @@ public class EmployeeApp {
 
     //The below is the menu and helpers
     private void printMenu() {
-        System.out.println("Employee Directory Management System - Phase 1");
-        System.out.println("1) Load Employee from TXT file (Read Data)");
+        System.out.println("com.cityhall.dms.Employee Directory Management System - Phase 1");
+        System.out.println("1) Load com.cityhall.dms.Employee from TXT file (Read Data)");
         System.out.println("2) Display All Employees");
-        System.out.println("3) Add Employee     (Create)");
-        System.out.println("4) Update Employee  (Update)");
-        System.out.println("5) Delete Employee  (Delete)");
-        System.out.println("6) Search Employee  (Name/Email/Department)");
+        System.out.println("3) Add com.cityhall.dms.Employee     (Create)");
+        System.out.println("4) Update com.cityhall.dms.Employee  (Update)");
+        System.out.println("5) Delete com.cityhall.dms.Employee  (Delete)");
+        System.out.println("6) Search com.cityhall.dms.Employee  (Name/Email/Department)");
         System.out.println("7) Custom: Count Employees by Department");
-        System.out.println("8) De-Activate Employee (soft Delete)");
-        System.out.println("9) Re-Activate Employee");
+        System.out.println("8) De-Activate com.cityhall.dms.Employee (soft Delete)");
+        System.out.println("9) Re-Activate com.cityhall.dms.Employee");
         System.out.println("10) Clear all Employees");
         System.out.println("11) Exit");
     }
@@ -142,7 +144,7 @@ public class EmployeeApp {
         }
     }
 
-    //The below turns one line of text into an Employee object
+    //The below turns one line of text into an com.cityhall.dms.Employee object
     private Employee parseEmployeeTxt(String line) {
         //each field is separated by a comma
         String[] parts = line.split(",", -1);
@@ -179,7 +181,7 @@ public class EmployeeApp {
             System.out.println("No employees yet.  Try loading a text file or adding one.");
             return;
         }
-        System.out.println("\n--- Employee List (" + all.size() + ") ---");
+        System.out.println("\n--- com.cityhall.dms.Employee List (" + all.size() + ") ---");
         for (Employee e : all) {
             System.out.println(formatEmployee(e));
         }
@@ -187,7 +189,7 @@ public class EmployeeApp {
 
     //(3)The below adds a new employee (manually)
     private void addEmployee() {
-        System.out.println("Add New Employee");
+        System.out.println("Add New com.cityhall.dms.Employee");
         Employee e = new Employee();
 
         e.setFirstName(promptNonEmpty("First Name: "));
@@ -206,15 +208,15 @@ public class EmployeeApp {
         e.setHireDate(promptDate("Hire Date: "));
 
         boolean ok = service.addEmployee(e);
-        System.out.println(ok ? "New Employee Added!" : "Not added (validation failed).");
+        System.out.println(ok ? "New com.cityhall.dms.Employee Added!" : "Not added (validation failed).");
     }
 
     //(4)The below updates an existing employee
     private void updateEmployee() {
-        int id = readInt("Enter Employee ID to update: ");
+        int id = readInt("Enter com.cityhall.dms.Employee ID to update: ");
         Employee existing = service.getEmployeeById(id);
         if (existing == null) {
-            System.out.println("Employee with ID " + id + " not found.");
+            System.out.println("com.cityhall.dms.Employee with ID " + id + " not found.");
             return;
         }
 
@@ -265,10 +267,10 @@ public class EmployeeApp {
 
     //(5)The below deletes employees by ID
     private void deleteEmployee() {
-        int id = readInt("Enter Employee ID to delete: ");
+        int id = readInt("Enter com.cityhall.dms.Employee ID to delete: ");
         Employee existing = service.getEmployeeById(id);
         if (existing == null) {
-            System.out.println("Employee with ID " + id + " not found.");
+            System.out.println("com.cityhall.dms.Employee with ID " + id + " not found.");
             return;
         }
 
@@ -329,7 +331,7 @@ public class EmployeeApp {
 
     //(8)The below is for the soft delete: Mark as Inactive
     private void deactivateEmployee() {
-        int id = readInt("Enter Employee ID to deactivate (0 to cancel): ");
+        int id = readInt("Enter com.cityhall.dms.Employee ID to deactivate (0 to cancel): ");
         if (id <= 0) {
             System.out.println("Cancelled.");
             return;
@@ -337,7 +339,7 @@ public class EmployeeApp {
 
         Employee e =  service.getEmployeeById(id);
         if (e == null) {
-            System.out.println("Employee with ID " + String.format("%04d", id) + " not found.");
+            System.out.println("com.cityhall.dms.Employee with ID " + String.format("%04d", id) + " not found.");
             return;
         }
 
@@ -348,12 +350,12 @@ public class EmployeeApp {
         }
 
         boolean ok = service.deactivateEmployee(id);
-        System.out.println(ok ? "Employee Deactivated!" : "Not deactivated (validation failed).");
+        System.out.println(ok ? "com.cityhall.dms.Employee Deactivated!" : "Not deactivated (validation failed).");
     }
 
     //(9)The below brings back an inactive employee
     private void reactivateEmployee() {
-        int id = readInt("Enter Employee ID to reactivate (0 to cancel): ");
+        int id = readInt("Enter com.cityhall.dms.Employee ID to reactivate (0 to cancel): ");
         if (id <= 0) {
             System.out.println("Cancelled.");
             return;
@@ -361,12 +363,12 @@ public class EmployeeApp {
 
         Employee e =  service.getEmployeeById(id);
         if (e == null) {
-            System.out.println("Employee with ID " + String.format("%04d", + id) + " not found.");
+            System.out.println("com.cityhall.dms.Employee with ID " + String.format("%04d", + id) + " not found.");
             return;
         }
 
         boolean ok = service.reactivateEmployee(id);
-        System.out.println(ok ? "Employee reactivated!" : "Not reactivated (validation failed).");
+        System.out.println(ok ? "com.cityhall.dms.Employee reactivated!" : "Not reactivated (validation failed).");
     }
 
 

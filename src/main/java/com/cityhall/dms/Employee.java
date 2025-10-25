@@ -1,3 +1,5 @@
+package com.cityhall.dms;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
@@ -5,8 +7,8 @@ import java.util.Objects;
 /**Robert Yantin Jr.
  * CEN 3024 - Software Development I
  * October 20, 2025
- * Employee.java
- * This class represents one Employee record in the system.  It just holds the data.
+ * com.cityhall.dms.Employee.java
+ * This class represents one com.cityhall.dms.Employee record in the system.  It just holds the data.
  * Each object has information like name, department, phone, etc.
  * The Service and Repository classes will actually interact with these objects.
  */
@@ -122,7 +124,7 @@ public class Employee {
     public String toString() {
         DateTimeFormatter fmt = DateTimeFormatter.ISO_DATE;
         return String.format(
-                "Employee #%d\n" +
+                "com.cityhall.dms.Employee #%d\n" +
                         "Name: %s\n" +
                         "Department: %s\n" +
                         "Email: %s\n" +

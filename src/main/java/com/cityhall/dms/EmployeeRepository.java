@@ -1,3 +1,5 @@
+package com.cityhall.dms;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -5,8 +7,8 @@ import java.util.Objects;
 /**Robert Yantin Jr.
  * CEN 3024 - Software Development I
  * October 20, 2025
- * EmployeeRepository.java
- * This class basically acts like a database for our Employee objects.
+ * com.cityhall.dms.EmployeeRepository.java
+ * This class basically acts like a database for our com.cityhall.dms.Employee objects.
  * It stores them in a list and lets us do CRUD (Create, Read, Update, Delete).
  * For Phase 1, everything happens in memory - no database yet.
  */

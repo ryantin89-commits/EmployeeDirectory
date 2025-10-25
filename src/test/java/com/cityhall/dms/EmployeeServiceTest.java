@@ -1,3 +1,5 @@
+package com.cityhall.dms;
+
 import java.time.LocalDate;
 import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
@@ -6,9 +8,9 @@ import static org.junit.jupiter.api.Assertions.*;
  * Robert Yantin Jr.
  * CEN 3024 - Software Development I
  * October 20, 2025
- * EmployeeServiceTest.java
+ * com.cityhall.dms.EmployeeServiceTest.java
  *
- * This class uses JUnit 5 to test all the main features of my Employee Directory System.
+ * This class uses JUnit 5 to test all the main features of my com.cityhall.dms.Employee Directory System.
  * It checks that adding, updating, deleting, and counting employees (custom action) work correctly,
  * and that invalid inputs are caught properly.
  *
@@ -40,7 +42,7 @@ class EmployeeServiceTest {
         return e;
     }
 
-    //Add Employee Test
+    //Add com.cityhall.dms.Employee Test
     //We add one person and make sure it's saved in the list.
     @org.junit.jupiter.api.Test
     void addEmployee_succeedsWithValidData() {
@@ -58,7 +60,7 @@ class EmployeeServiceTest {
         assertEquals(0, service.getAllEmployees().size());
     }
 
-    //Update Employee Test
+    //Update com.cityhall.dms.Employee Test
     //Update an employee's department and check that it actually changes.
     @org.junit.jupiter.api.Test
     void updateEmployee_updatesFields() {
@@ -83,7 +85,7 @@ class EmployeeServiceTest {
         assertFalse(service.updateEmployee(ghost));
     }
 
-    //Delete Employee Test (Hard Delete)
+    //Delete com.cityhall.dms.Employee Test (Hard Delete)
     //After deleting, we verify the employee is gone from the system.
     @org.junit.jupiter.api.Test
     void deleteEmployee_removesById() {

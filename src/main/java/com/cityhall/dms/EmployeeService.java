@@ -1,17 +1,19 @@
+package com.cityhall.dms;
+
 import java.util.List;
 
 /**Robert Yantin Jr.
  * CEN 3024 - Software Development I
  * October 20, 2025
- * EmployeeService.java
+ * com.cityhall.dms.EmployeeService.java
  * This class handles all the logic behind the scenes for the employee system.
- * It connects the main program with the EmployeeRepository and makes sure all input
+ * It connects the main program with the com.cityhall.dms.EmployeeRepository and makes sure all input
  * is valid before anything gets saved or changed.
  */
 
 public class EmployeeService {
 
-    //The below creates an instance of our EmployeeRepository so we can store and manage employees
+    //The below creates an instance of our com.cityhall.dms.EmployeeRepository so we can store and manage employees
     private EmployeeRepository repo =  new EmployeeRepository();
 
     //The below method adds a new employee after validating their information
@@ -40,7 +42,7 @@ public class EmployeeService {
         if (isValidEmployee(employee)) {
             boolean success = repo.updateEmployee(employee);
             if (!success) {
-                System.out.println("Error: Employee not found for update.");
+                System.out.println("Error: com.cityhall.dms.Employee not found for update.");
             }
             return success;
         } else {
@@ -53,7 +55,7 @@ public class EmployeeService {
     public boolean deleteEmployee(int id) {
         boolean success = repo.deleteEmployee(id);
         if (!success) {
-            System.out.println("Error: Employee not found for deletion.");
+            System.out.println("Error: com.cityhall.dms.Employee not found for deletion.");
         }
         return success;
     }
@@ -62,11 +64,11 @@ public class EmployeeService {
     public boolean deactivateEmployee(int id) {
         Employee ee = getEmployeeById(id);
         if (ee == null) {
-            System.out.println("Error: Employee not found.");
+            System.out.println("Error: com.cityhall.dms.Employee not found.");
             return false;
         }
         if (!ee.isActive()) {
-            System.out.println("Employee is already inactive.");
+            System.out.println("com.cityhall.dms.Employee is already inactive.");
             return false;
         }
         ee.setActive(false);
@@ -77,11 +79,11 @@ public class EmployeeService {
     public boolean reactivateEmployee(int id) {
         Employee ee = getEmployeeById(id);
         if (ee == null) {
-            System.out.println("Error: Employee not found.");
+            System.out.println("Error: com.cityhall.dms.Employee not found.");
             return false;
         }
         if (ee.isActive()) {
-            System.out.println("Employee is already active.");
+            System.out.println("com.cityhall.dms.Employee is already active.");
         }
         ee.setActive(true);
         return true;
