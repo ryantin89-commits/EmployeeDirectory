@@ -1,10 +1,9 @@
 /**Robert Yantin Jr.
  * CEN 3024 - Software Development I
- * October 27, 2025
+ * November 5, 2025
  * com.cityhall.dms.Employee.java
- * This class represents one com.cityhall.dms.Employee record in the system.  It just holds the data.
- * Each object has information like name, department, phone, etc.
- * The Service and Repository classes will actually interact with these objects.
+ * This class represents one com.cityhall.dms.Employee record in the system.
+ * It now includes JPA annotations to integrate with the SQLite database.
  */
 
 package com.cityhall.dms;
@@ -12,26 +11,46 @@ package com.cityhall.dms;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
+
+import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
+
+@Entity
+@Table(name = "employee")
 public class Employee {
 
     //Every employee receives a unique ID number
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     //Basic information for the directory
+    @Column(name = "first_name", nullable = false)
     private String firstName;
+
+    @Column(name = "last_name", nullable = false)
     private String lastName;
+
+    @Column(nullable = false)
     private String email;
+
+    @Column
     private String department;
+
+    @Column
     private String phone;
+
+    @Column(name = "office_location")
     private String officeLocation;
 
     //Tracks if the employee is active in the system (soft delete)
+    @Column(columnDefinition = "INTEGER DEFAULT 1")
     private boolean active = true;
 
     //Hire date is going to be used a LocalDate instead of a String
-    @DateTimeFormat(pattern = "yyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "hire_date", columnDefinition = "TEXT")
     private LocalDate hireDate;
 
     //Below is the default constructor (basically a blank employee)
