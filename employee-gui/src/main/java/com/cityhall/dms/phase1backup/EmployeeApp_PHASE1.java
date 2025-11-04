@@ -8,7 +8,10 @@
  * Everything runs in memory at this point, no database until a future phase.
  */
 
-package com.cityhall.dms;
+package com.cityhall.dms.phase1backup;
+
+import com.cityhall.dms.Employee;
+import com.cityhall.dms.EmployeeService;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -18,7 +21,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.*;
 
-public class EmployeeApp {
+public class EmployeeApp_PHASE1 {
 
     //Service = The "brain" that talks to the memory repository
     private final EmployeeService service = new EmployeeService();
@@ -30,7 +33,7 @@ public class EmployeeApp {
     private final DateTimeFormatter DATE_FMT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     public static void main(String[] args) {
-        new EmployeeApp().run();
+        new EmployeeApp_PHASE1().run();
     }
 
     //The below is the main loop that shows the menu until the user decides to Exit.

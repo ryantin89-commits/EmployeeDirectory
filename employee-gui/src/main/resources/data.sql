@@ -1,0 +1,23 @@
+--Data: Sample employee records
+
+INSERT INTO employee (first_name, last_name, email, department, phone, office_location, hire_date, active)
+VALUES ('Veronica', 'Mendez', 'vmendez@cityhall.com', 'Information Technology', '3025', 'IT-013', '2020-06-27', 1),
+       ('Carlos', 'Rodriguez', 'crodriguez@cityhall.com', 'Human Resources', '4022', 'HR-007', '2013-02-07', 1),
+       ('James', 'Johnson', 'jjohnson@cityhall.com', 'Parks & Recreation', '2112', 'PR-025', '2019-08-20', 1),
+       ('Lisa', 'Chandler', 'lchandler@cityhall.com', 'Finance', '1425', 'FN-009', '2012-01-30', 1),
+       ('Erica', 'Yates', 'eyates@cityhall.com', 'Community Development', '5627', 'CD-002', '2023-12-09', 1),
+       ('Jason', 'Castillo', 'jcastillo@cityhall.com', 'City Manager', '2385', 'CM-003', '2015-11-04', 1),
+       ('Marisela', 'Ortiz', 'mortiz@cityhall.com', 'Procurement', '5533', 'PC-010', '2018-05-15', 1),
+       ('Tawny', 'Smith', 'tsmith@cityhall.com', 'Public Works', '1563', 'PW-263', '2017-03-27', 1),
+       ('Rose', 'Patel', 'rpatel@cityhall.com', 'Communications', '4012', 'CS-823', '2025-01-15', 1),
+       ('Amelia', 'Dubois', 'adubois@cityhall.com', 'Human Resources', '4130', 'HR-006', '2012-03-25', 1),
+       ('Jack', 'Sullivan', 'jsullivan@cityhall.com', 'Information Technology', '0998', 'IT-005', '2021-07-27', 1),
+       ('Harry', 'Potter', 'hpotter@cityhall.com', 'Parks & Recreation', '0278', 'PR-569', '2024-04-01', 1),
+       ('Hermione', 'Granger', 'hgranger@cityhall.com', 'Finance', '2582', 'FN-002', '2023-01-30', 1),
+       ('Ron', 'Weasley', 'rweasley@cityhall.com', 'Community Development', '1234', 'CD-440', '2013-08-03', 1),
+       ('Geraldo', 'Moretti', 'gmoretti@cityhall.com', 'City Manager', '1357', 'CM-020', '2020-06-05', 1),
+       ('Catherine', 'Rossi', 'crossi@cityhall.com', 'Procurement', '3680', 'PC-011', '2014-12-10', 1),
+       ('Kim', 'Kowalski', 'kkowalski@cityhall.com', 'Public Works', '5200', 'PW-150', '2010-02-27', 1),
+       ('Kevin', 'Choi', 'kchoi@cityhall.com', 'Communications', '0274', 'CS-239', '2011-09-12', 1),
+       ('Justin', 'Lefevre', 'jlefevre@cityhall.com', 'Human Resources', '0057', 'HR-005', '2019-10-12', 1),
+       ('Dario', 'Alvarez', 'dalvarez@cityhall.com', 'Economic Development', '5769', 'ED-001', '2015-03-08', 1);
