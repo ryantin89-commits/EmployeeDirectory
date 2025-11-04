@@ -19,7 +19,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class EmployeeGuiApplication {
 
     public static void main(String[] args) {
-        //This line runs the Spring Boot app — it sets up the server and loads everything
+        //This line runs the Spring Boot app it sets up the server and loads everything
         SpringApplication.run(EmployeeGuiApplication.class, args);
     }
 }
