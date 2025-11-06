@@ -79,17 +79,23 @@
             <artifactId>hibernate-community-dialects</artifactId>
             <version>6.6.29.Final</version>
         </dependency>
-
-
     </dependencies>
 
     <build>
         <plugins>
+            <!-- Spring Boot plugin to create an executable JAR with dependencies -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>3.3.5</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
-
 </project>

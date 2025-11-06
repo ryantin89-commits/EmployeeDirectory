@@ -14,8 +14,13 @@ package com.cityhall.dms;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@SpringBootApplication //Marks this as a Spring Boot app and triggers component scanning
+@SpringBootApplication//Marks this as a Spring Boot app and triggers component scanning
+@EnableJpaRepositories(basePackages = "com.cityhall.dms")
+@EntityScan(basePackages = "com.cityhall.dms")
+
 public class EmployeeGuiApplication {
 
     public static void main(String[] args) {
