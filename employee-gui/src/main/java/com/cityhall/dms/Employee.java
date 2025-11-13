@@ -1,7 +1,9 @@
-/**Robert Yantin Jr.
+/**
+ * Robert Yantin Jr.
  * CEN 3024 - Software Development I
- * November 5, 2025
+ * November 17, 2025
  * com.cityhall.dms.Employee.java
+ *
  * This class represents one com.cityhall.dms.Employee record in the system.
  * It now includes JPA annotations to integrate with the SQLite database.
  */
@@ -15,50 +17,93 @@ import java.util.Objects;
 import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
-
+/**
+ * The below class represents a single city employee
+ * in the directory, including contact information,
+ * department, and employment status.
+ */
 @Entity
 @Table(name = "employee")
 public class Employee {
 
-    //Every employee receives a unique ID number
+    /**
+     * Every employee receives a unique ID number.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    //Basic information for the directory
+    /**
+     * The employee's first name.
+     */
     @Column(name = "first_name", nullable = false)
     private String firstName;
 
+    /**
+     * The employee's last name.
+     */
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
+    /**
+     * The employee's work email address.
+     */
     @Column(nullable = false)
     private String email;
 
+    /**
+     * The department where the employee works.
+     */
     @Column
     private String department;
 
+    /**
+     * The employee's phone number.
+     */
     @Column
     private String phone;
 
+    /**
+     * The office location assigned to the employee.
+     */
     @Column(name = "office_location")
     private String officeLocation;
 
-    //Tracks if the employee is active in the system (soft delete)
+    /**
+     * Indicates whether the employee is active in the system.
+     * Used for soft deletes (true = active, false = inactive).
+     */
     @Column(columnDefinition = "INTEGER DEFAULT 1")
     private boolean active = true;
 
-    //Hire date is going to be used a LocalDate instead of a String
+    /**
+     * The employee's hire date.
+     * Stored as a LocalDate using the format yyyy-MM-dd.
+     */
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "hire_date", columnDefinition = "TEXT")
     private LocalDate hireDate;
 
-    //Below is the default constructor (basically a blank employee)
-    public Employee() {}
+    /**
+     * Default constructor that creates an empty Employee instance.
+     */
+    public Employee() {
+    }
 
-    //Below is the full constructor when we want to create an employee with all the details
+    /**
+     * Full constructor used to create an Employee with all available details.
+     *
+     * @param id the unique identifier of the employee
+     * @param firstName the employee's first name
+     * @param lastName the employee's last name
+     * @param email the employee's email address
+     * @param department the department where the employee works
+     * @param phone the employee's phone number
+     * @param officeLocation the employee's assigned office location
+     * @param hireDate the date the employee was hired     *
+     */
     public Employee(Integer id, String firstName, String lastName, String email, String department, String phone, String
-                    officeLocation, LocalDate hireDate) {
+            officeLocation, LocalDate hireDate) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -69,78 +114,198 @@ public class Employee {
         this.hireDate = hireDate;
     }
 
-    //Below are my getters and setters
+    /**
+     * Gets the employee's ID.
+     *
+     * @return the employee ID
+     */
     public Integer getId() {
         return id;
     }
+
+    /**
+     * Sets the employee's ID.
+     *
+     * @param id the ID to assign
+     */
     public void setId(Integer id) {
         this.id = id;
     }
+
+    /**
+     * Gets the employee's first name.
+     *
+     * @return the first name
+     */
     public String getFirstName() {
         return firstName;
     }
+
+    /**
+     * Sets the employee's first name.
+     *
+     * @param firstName the first name to assign
+     */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+
+    /**
+     * Gets the employee's last name.
+     *
+     * @return the last name
+     */
     public String getLastName() {
         return lastName;
     }
+
+    /**
+     * Sets the employee's last name.
+     *
+     * @param lastName the last name to assign
+     */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    /**
+     * Gets the employee's email address.
+     *
+     * @return the email address
+     */
     public String getEmail() {
         return email;
     }
+
+    /**
+     * Sets the employee's email address.
+     *
+     * @param email the email address to assign
+     */
     public void setEmail(String email) {
         this.email = email;
     }
+
+    /**
+     * Gets the employee's department.
+     *
+     * @return the department name
+     */
     public String getDepartment() {
         return department;
     }
+
+    /**
+     * Sets the employee's department.
+     *
+     * @param department the department to assign
+     */
     public void setDepartment(String department) {
         this.department = department;
     }
+
+    /**
+     * Gets the employee's phone number.
+     *
+     * @return the phone number
+     */
     public String getPhone() {
         return phone;
     }
+
+    /**
+     * Sets the employee's phone number.
+     *
+     * @param phone the phone number to assign
+     */
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+    /**
+     * Gets the employee's office location.
+     *
+     * @return the office location
+     */
     public String getOfficeLocation() {
         return officeLocation;
     }
+
+    /**
+     * Sets the employee's office location.
+     *
+     * @param officeLocation the office location to assign
+     */
     public void setOfficeLocation(String officeLocation) {
         this.officeLocation = officeLocation;
     }
+
+    /**
+     * Gets the employee's hire date.
+     *
+     * @return the hire date as a LocalDate
+     */
     public LocalDate getHireDate() {
         return hireDate;
     }
+
+    /**
+     * Sets the employee's hire date.
+     *
+     * @param hireDate the hire date to assign
+     */
     public void setHireDate(LocalDate hireDate) {
         this.hireDate = hireDate;
     }
+
+    /**
+     * Checks whether the employee is currently active.
+     *
+     * @return true if the employee is active, false otherwise
+     */
     public boolean isActive() {
         return active;
     }
+
+    /**
+     * Sets whether the employee is active.
+     * This supports soft-delete functionality.
+     *
+     * @param active true if the employee should be marked active
+     */
     public void setActive(boolean active) {
         this.active = active;
     }
 
-    //The below are my helper methods
-    //Just returns their full name so we don't repeat it everywhere
+    /**
+     * Builds and returns the employee's full name.
+     *
+     * @return the full name in the "First Last" format
+     */
     public String fullName() {
         return (firstName + " " + lastName).trim();
     }
 
-    //The below is used for searching (basically checks if the text matches any of these fields)
+    /**
+     * Checks whether the given query matches the employee's
+     * name, department, or email.  Used for simple search filtering.
+     *
+     * @param query the text to search for
+     * @return true if the query matches one of the searchable fields
+     */
     public boolean matchesQuery(String query) {
         if (query == null || query.isBlank()) return false;
         String q = query.toLowerCase();
         return (fullName().toLowerCase().contains(q)
-        || (department != null && department.toLowerCase().contains(q))
+                || (department != null && department.toLowerCase().contains(q))
                 || (email != null && email.toLowerCase().contains(q)));
     }
 
-    //The below is how each employee will show up when we print them to the console.
+    /**
+     * Converts the employee's data to a formatted string.
+     *
+     * @return a formatted summary of the employee's information
+     */
     @Override
     public String toString() {
         DateTimeFormatter fmt = DateTimeFormatter.ISO_DATE;
@@ -161,7 +326,13 @@ public class Employee {
                 hireDate != null ? hireDate.format(fmt) : "N/A");
     }
 
-    //The below checks if two employees are the same person (same ID)
+    /**
+     * Compares this employee to another object to determine if they are equal.
+     * Two employees are considered equal if they share the same ID.
+     *
+     * @param o the reference object with which to compare.
+     * @return true if the objects represent the same employee
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -170,7 +341,12 @@ public class Employee {
         return Objects.equals(id, e.id);
     }
 
-    //Adding the below so if two employees have the same ID, they should land in the same hash bucket
+    /**
+     * Generates a hash code for the employee.
+     * Employees with the same ID produce the same hash value.
+     *
+     * @return the hash code
+     */
     @Override
     public int hashCode() {
         return Objects.hash(id);
